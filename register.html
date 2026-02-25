@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Create an ES Commerce account to start shopping.">
+  <title>Register - ES Commerce</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="auth-page">
+  <div class="auth-card">
+    <h1>Create Account</h1>
+    <p class="subtitle">Join ES Commerce today</p>
+    <form id="register-form">
+      <div class="form-group">
+        <label for="reg-name">Full Name</label>
+        <input type="text" id="reg-name" placeholder="Enter your name" required>
+        <span class="error-text">Name is required</span>
+      </div>
+      <div class="form-group">
+        <label for="reg-email">Email Address</label>
+        <input type="email" id="reg-email" placeholder="Enter your email" required>
+        <span class="error-text">Valid email is required</span>
+      </div>
+      <div class="form-group">
+        <label for="reg-password">Password</label>
+        <input type="password" id="reg-password" placeholder="Enter password" required>
+        <span class="error-text">Password must be at least 6 characters</span>
+      </div>
+      <div class="form-group">
+        <label for="reg-confirm">Confirm Password</label>
+        <input type="password" id="reg-confirm" placeholder="Confirm password" required>
+        <span class="error-text">Passwords do not match</span>
+      </div>
+      <button type="submit" class="btn btn-primary btn-full btn-lg">Register</button>
+    </form>
+    <div class="auth-links">
+      Already have an account? <a href="login.html">Login here</a>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script>
+    /** Handles the register form submission with full validation. */
+    document.getElementById('register-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      FormValidator.clearErrors(this);
+
+      const name = document.getElementById('reg-name');
+      const email = document.getElementById('reg-email');
+      const password = document.getElementById('reg-password');
+      const confirm = document.getElementById('reg-confirm');
+      let valid = true;
+
+      if (!FormValidator.validateRequired(name.value)) {
+        FormValidator.showError(name, 'Name is required');
+        valid = false;
+      }
+      if (!FormValidator.validateEmail(email.value)) {
+        FormValidator.showError(email, 'Please enter a valid email');
+        valid = false;
+      }
+      if (!FormValidator.validateMinLength(password.value, 6)) {
+        FormValidator.showError(password, 'Password must be at least 6 characters');
+        valid = false;
+      }
+      if (!FormValidator.validateMatch(password.value, confirm.value)) {
+        FormValidator.showError(confirm, 'Passwords do not match');
+        valid = false;
+      }
+      if (!valid) return;
+
+      const result = AuthManager.register(name.value, email.value, password.value);
+      if (result.success) {
+        Toast.show('Account created! Redirecting to login...', 'success');
+        setTimeout(() => window.location.href = 'login.html', 1500);
+      } else {
+        Toast.show(result.message, 'error');
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Order confirmation - ES Commerce">
+  <title>Order Shipped - ES Commerce</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <nav id="main-nav"></nav>
+
+  <div class="order-page">
+    <div class="order-card">
+      <div class="icon"><i class="fa-solid fa-box" style="color:var(--accent)"></i></div>
+      <div class="order-shipped-banner">
+        <i class="fa-solid fa-truck-fast"></i> Order Shipped
+      </div>
+      <h1>Thank You!</h1>
+      <p>Your order has been placed and is on its way.</p>
+      <a href="index.html" class="btn btn-primary btn-lg">
+        <i class="fa-solid fa-arrow-left"></i> Continue Shopping
+      </a>
+    </div>
+
+    <!-- Testimonial Slider -->
+    <div class="testimonial-slider" id="testimonial-slider">
+      <div class="testimonial-card active">
+        <p><i class="fa-solid fa-quote-left" style="color:var(--primary);margin-right:0.5rem"></i>
+          Amazing products and super fast delivery! Will definitely shop again.</p>
+        <strong style="margin-top:0.8rem;display:block;color:var(--primary)">
+          <i class="fa-solid fa-user-circle"></i> Sarah K.
+        </strong>
+      </div>
+      <div class="testimonial-card">
+        <p><i class="fa-solid fa-quote-left" style="color:var(--primary);margin-right:0.5rem"></i>
+          Great prices and the quality exceeded my expectations. Highly recommend!</p>
+        <strong style="margin-top:0.8rem;display:block;color:var(--primary)">
+          <i class="fa-solid fa-user-circle"></i> Ahmed M.
+        </strong>
+      </div>
+      <div class="testimonial-card">
+        <p><i class="fa-solid fa-quote-left" style="color:var(--primary);margin-right:0.5rem"></i>
+          Customer service was outstanding. They resolved my issue in minutes.</p>
+        <strong style="margin-top:0.8rem;display:block;color:var(--primary)">
+          <i class="fa-solid fa-user-circle"></i> Lisa R.
+        </strong>
+      </div>
+      <div class="testimonial-nav">
+        <button id="test-prev"><i class="fa-solid fa-chevron-left"></i></button>
+        <button id="test-next"><i class="fa-solid fa-chevron-right"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script>
+    let currentTestimonial = 0;
+
+    /** Initializes order page and testimonial slider. */
+    function initOrderPage() {
+      NavBuilder.build();
+      const cards = document.querySelectorAll('.testimonial-card');
+      document.getElementById('test-prev').addEventListener('click', () => navigateTestimonial(cards, -1));
+      document.getElementById('test-next').addEventListener('click', () => navigateTestimonial(cards, 1));
+    }
+
+    /** Navigates testimonial cards by direction (-1 or 1). */
+    function navigateTestimonial(cards, direction) {
+      cards[currentTestimonial].classList.remove('active');
+      currentTestimonial = (currentTestimonial + direction + cards.length) % cards.length;
+      cards[currentTestimonial].classList.add('active');
+    }
+
+    document.addEventListener('DOMContentLoaded', initOrderPage);
+  </script>
+</body>
+</html>
