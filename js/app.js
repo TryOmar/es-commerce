@@ -84,7 +84,7 @@ const PRODUCT_CATALOG = [
   { id: 2, name: 'Writing Pen Set', price: 100, category: 'school', image: 'https://images.unsplash.com/photo-1585336261022-680e295ce3fe?w=400&h=300&fit=crop', description: 'Premium ballpoint pen set for smooth writing.' },
   { id: 3, name: 'Notebook Bundle', price: 80, category: 'school', image: 'https://images.unsplash.com/photo-1531346878377-a5be20888e57?w=400&h=300&fit=crop', description: 'Pack of 3 ruled notebooks for school or office.' },
   { id: 4, name: 'Cotton T-Shirt', price: 350, category: 'clothes', image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=300&fit=crop', description: 'Comfortable everyday cotton tee in multiple colors.' },
-  { id: 5, name: 'Summer Dress', price: 500, category: 'clothes', image: 'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=400&h=300&fit=crop', description: 'Elegant floral pattern summer dress.' },
+  { id: 5, name: 'Summer Dress', price: 500, category: 'clothes', image: 'https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?w=400&h=300&fit=crop', description: 'Elegant floral pattern summer dress.' },
   { id: 6, name: 'Denim Jacket', price: 750, category: 'clothes', image: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&h=300&fit=crop', description: 'Classic denim jacket for all seasons.' },
   { id: 7, name: 'Matte Lipstick', price: 150, category: 'makeup', image: 'https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400&h=300&fit=crop', description: 'Long-lasting matte finish lipstick.' },
   { id: 8, name: 'Foundation Kit', price: 400, category: 'makeup', image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&h=300&fit=crop', description: 'Full coverage professional foundation.' },
